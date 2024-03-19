@@ -57,10 +57,16 @@ db.run(`CREATE TABLE IF NOT EXISTS messages (
     }
 });
 
-app.use(express.static(__dirname));
+// Define o caminho para os arquivos estáticos do frontend
+const frontendPath = path.join(__dirname, '..', 'frontend');
 
+// Serve os arquivos estáticos do diretório 'frontend'
+app.use(express.static(frontendPath));
+
+// Rota para '/'
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/index.html');
+    // Envia o arquivo 'index.html' para o cliente
+    res.sendFile(path.join(frontendPath, 'index.html'));
 });
 
 // Estrutura para manter o estado dos usuários e sockets
