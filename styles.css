@@ -1,0 +1,653 @@
+
+/* Reset básico para garantir consistência */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body, html {
+  width: 100%;
+  min-height: 300vh;
+  max-height: 400vh;
+  font-size: 14px;
+  background-color:  rgb(255, 255, 255);
+  color: #D1D1D1; /* Cor do texto */
+}
+
+.imagem{
+  position: fixed;
+  left: 50%;
+  top: 30%;
+  display: block;
+  z-index: 2;
+}
+
+.imagem img{
+  width: 50%;
+  height: 50%;
+}
+
+.imagem p{
+  color: #292929;
+}
+
+.configuracoes{
+  display: flex;
+  position: fixed;
+  left: 0.3%;
+  top: 5%;
+  z-index: 80;
+  flex-direction: column;
+}
+
+
+.configuracoes #passaro{
+  width: 90px;
+  height: 90px;
+}
+
+/* Estilo dos chat-boxes */
+.chat-box {
+  display: none; /* Chat-boxes são ocultados inicialmente */
+  border-radius: 8px;
+  margin: 8px 0;
+  padding: 10px;
+  color: white; /* Cor do texto dentro do chat-box */
+  width: 100%;
+  min-height: 100%;
+}
+
+.config{
+  width: 14.7%;
+  height: 17vh;
+  position: fixed;
+  background-color: rgb(248, 252, 255);
+  left: 5.3%;
+  top: 0;
+  border-right: 1px solid #d7d7d7;
+  border-bottom: 2px solid #d7d7d7;
+  border-left: 1px solid #d7d7d7;
+  z-index: 10;
+}
+
+.config p{
+  font-size: 20px;
+  color: #000000;
+  margin-top: 10px;
+  margin-left: 23px;
+  font-weight: 200;
+  border: none;
+  font-weight: 400;
+  font-family: arial;
+
+}
+
+.lista_users {
+  background-color:  rgb(248, 252, 255);
+  width: 280px; /* Largura da lista de usuários */
+  height: 430vh;
+  padding: 20px;
+  /* Adicionando uma barra de rolagem personalizada */
+  scrollbar-width: 0;
+  scrollbar-color:transparent; /* Cor da barra de rolagem e do fundo */
+  border-right:  1px solid rgb(36, 36, 36);
+  z-index: 5;
+  margin-left: 101px;
+  align-items: center;
+  position: absolute;
+  border-right: 1px solid #d7d7d7;
+  border-left: 1px solid #d7d7d7;
+  top: 17%;
+}
+
+
+.lista_users p {
+  color: #000000; /* Cor do texto 'Usuários' */
+  margin-bottom: 20px; /* Espaçamento abaixo do texto 'Usuários' */
+  border-bottom: 1px solid;
+  font-size: 22px;
+  margin-top: 10%;
+}
+
+      /* Adapte o CSS conforme necessário para manter o estilo desejado */
+      .file-label {
+
+        display: inline-block;
+        background-color:transparent;
+        color: rgb(255, 0, 0);
+        padding: 4px 6px;
+        cursor: pointer;
+        border-radius: 5px;
+        margin-top: 6%;
+        display: flex;
+        position: fixed;
+        left: 8.5%;
+        z-index: 10;
+        font-size: 17px;
+        
+      }
+
+      .file-label:hover{
+        background-color: #fa00001d;
+      }
+    
+      .file-label span {
+        margin-right: 2px;
+      }
+    
+      .file-label input[type="file"] {
+        display: none;
+      }
+
+/* Estilo dos botões dos usuários */
+.user-button {
+  background-color: transparent; /* Fundo transparente para os botões */
+  border: 1px solid rgb(20, 20, 20);
+  border-radius: 6px; /* Bordas arredondadas para os botões */
+  color: #1b1b1b; /* Cor do texto dos botões */
+  padding: 23px 20px;
+  margin-bottom: 30px; /* Espaçamento entre os botões */
+  width: 95%;
+  text-align: left;
+  transition: background-color 0.3s;
+  font-size: 15px;
+  margin-left: 5px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.chat-footer{
+  position: absolute;
+  top: 83%;
+  width: 80%;
+  left: 20%;
+  border-top:  1px solid #d7d7d7;
+  height: 17vh;
+  position: fixed;
+  background-color: #ffffff;
+  
+}
+
+/* Input de mensagem e botão enviar */
+#message-input {
+  border: none;
+  border-radius: 8px;
+  padding: 10px;
+  width: 70%;
+  position: fixed;
+  left: 23%;
+  background-color: #b9b9b994; /* Cor de fundo do input */
+  color: rgb(20, 20, 20); /* Cor do texto do input */
+  min-height: 7vh;
+  font-size:18px;
+  margin-top: 2.5%;
+  overflow-y: auto;
+  max-height: 50vh;
+  overflow-x: hidden;
+  padding-left: 15px;
+}
+
+#message-input::placeholder{
+  font-size:18px;
+}
+
+  #archi {
+    z-index: 12;
+    position: fixed;
+    background-color: transparent;
+    border: none;
+    top: 12.7%;
+    margin-left: 6.6%;
+    width: 1px;
+    height: 1px;
+    cursor: auto;
+}
+
+p{
+  color: #000000;
+}
+
+.message-area{
+  width: 80%;
+  height: 74.7vh;
+  overflow: auto;
+  margin-top: 3%;
+  background-color: transparent;
+  position: fixed;
+  margin-left: 20%;
+  background-color: rgb(235, 241, 246);
+  padding: 50px;
+  border-top: 1px solid #d7d7d7;
+
+}
+
+.highlighted { background-color: yellow; }
+
+.peslu input{
+  position: absolute;
+  z-index: 25;
+  left: 6.5%;
+  top: 6%;
+  border-radius: 3px;
+  width: 10%;
+  padding: 7px;
+  padding-left: 8px;
+  background-color:  rgba(116, 116, 116, 0.151);
+  position: fixed;
+  font-size: 15px;
+  border: none;
+  display: block;
+  margin-bottom: 10px;
+  color: #333333; /* Cor do texto */
+}
+
+#send-message {
+  background-color: #8c1212; /* Cor de fundo do botão enviar */
+  border: none;
+  border-radius: 8px;
+  padding: 7px 15px;
+  color: white; /* Cor do texto do botão enviar */
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-size: 17px;
+  position: fixed;
+  left: 93.5%;
+  top: 89%;
+}
+
+#send-message:hover {
+  background-color: #8c12127e; /* Cor de fundo do botão enviar ao passar o mouse */
+}
+
+/* Media queries para responsividade podem ser adicionadas conforme necessário */
+
+/* Media queries para responsividade podem ser adicionadas conforme necessário */
+.message {
+  display: flex;
+  flex-direction: column; /* Isso garante que as mensagens sejam alinhadas verticalmente */
+  padding: 5px;
+  border-radius: 6px;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+.sent-message, .received-message {
+  width: auto; /* Permite que o elemento cresça com o conteúdo */
+  display: inline-flex; /* Utiliza flex para permitir um layout interno flexível */
+  flex-direction: column; /* Alinha os itens internos verticalmente */
+}
+
+/* Estilo para mensagens enviadas pelo usuário */
+.sent-message {
+  background-color: #bd2600; /* Cor para mensagens enviadas */
+  margin-left: 10%; /* Alinha à direita */
+  margin-right: 60%; /* Mantém uma margem à direita */
+  max-width: 80%; /* Ajuste conforme necessário para o layout desejado */
+  min-width: 15%;
+  font-size: 19px;
+  color: #ffffff;
+  border: 1px solid rgb(255, 255, 255);
+  word-wrap: wrap;
+  opacity: 0.9;
+}
+
+/* Estilo para mensagens recebidas pelo usuário */
+.received-message {
+  background-color: #00974c; /* Cor para mensagens enviadas */
+  margin-left: 70%; /* Mantém uma margem à esquerda */
+  max-width: 80%; /* Ajuste conforme necessário para o layout desejado */
+  min-width: 15%;
+  font-size: 19px;
+  color: #ffffff;
+  border: 1px solid rgb(255, 255, 255);
+  opacity: 0.9;
+}
+
+.sent-message .sender, .received-message .sender {
+  font-weight: bold;
+  margin-bottom: 5px;
+  display: none;
+}
+
+
+#conversation-status{
+  top: 14px;
+  position: fixed;
+  left: 23%;
+  font-size: 22px;
+  width: 11%;
+  text-align: center;
+  color: rgb(43, 43, 43);
+  padding-left: 10px;
+  border: 1px solid black;
+  padding: 5px;
+  height: 5vh;
+  border-radius: 3px;
+  background-color: transparent;
+  color: #202020;
+}
+
+#pessoas{
+  padding-right: 100px;
+}
+
+.notification-container {
+  position: fixed;
+  top: 78%;
+  left: 12%;
+  z-index: 69;
+}
+
+
+.emoji-picker {
+  text-align: center;
+  top: 90%;
+  position: fixed;
+  left: 90%;
+}
+
+.emoji-trigger {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.emoji-trigger:hover {
+  transform: scale(1.1);
+}
+
+.emoji-library {
+  display: none; /* Inicialmente oculto */
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 60px;
+  border: 1px solid #000000;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  padding: 10px;
+  width: 300px;
+  background-color: #ffffff;
+  overflow-y: auto;
+  max-height: 200px;
+  z-index: 99;
+}
+
+.emoji-library span {
+  cursor: pointer;
+  padding: 5px;
+  display: inline-block;
+  font-size: 24px; /* Ajuste este valor conforme necessário */
+  transition: transform 0.2s ease-in-out;
+}
+
+.emoji-library span:hover {
+  transform: scale(1.2); /* Efeito de zoom ao passar o mouse (opcional) */
+}
+
+
+.emoji-library span:hover {
+  background-color: #292929;
+  border-radius: 5px;
+}
+
+.notification {
+  background-color: #000000;
+  border: 1px solid #ffffff;
+  padding: 10px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+
+}
+
+
+
+
+.dark .bi-sun {
+  display: none;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+.bi {
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+.bi-moon {
+  display: none;
+}
+
+.botao{
+  position: fixed;
+  left: 2.2%;
+  top: 90%;
+  z-index: 60;
+}
+
+
+/* Estilo do container de login */
+#login-container {
+  display: flex;
+  height: 100vh;
+  z-index: 99;
+  position: fixed;
+  width: 100%;
+}
+
+/* Estilo da metade esquerda (preta) */
+#login-container .left-half {
+  flex: 1;
+  background-color: #000000; /* Cor de fundo */
+}
+
+/* Estilo da metade direita (branca) */
+#login-container .right-half {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff; /* Cor de fundo */
+
+}
+
+h3{
+  color: #fff;
+  position: absolute;
+  font-size: 20px;
+  background-color: #333;
+  width: 50%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  padding-left: 80px;
+  padding-top: 30px;
+  font-family: arial;
+}
+
+h4{
+  color: #fff;
+  position: absolute;
+  font-size: 40px;
+  font-family: arial;
+  top: 41%;
+}
+
+/* Estilo do formulário de login */
+#login-form {
+  background-color: #ffffff; /* Cor de fundo */
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Sombra */
+  width: 100%;
+  padding-top: 20%;
+  padding-left: 4%;
+  display: block;
+}
+
+/* Estilo das etiquetas */
+#texto {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #333333; /* Cor do texto */
+  right: 320px;
+  position: absolute;
+  top: 42%;
+  font-size: 18px;
+}
+
+#textosenha {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #333333; /* Cor do texto */
+  right: 415px;
+  position: absolute;
+  top: 52.5%;
+  font-size: 18px;
+}
+
+
+/* Estilo dos campos de entrada */
+#username {
+  width: 234px;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #dddddd; /* Cor da borda */
+  border-radius: 4px;
+  font-size: 16px;
+  right: 240px;
+  position: absolute;
+  top: 46%;
+}
+
+/* Estilo dos campos de entrada */
+#senha {
+  width: 234px;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #dddddd; /* Cor da borda */
+  border-radius: 4px;
+  font-size: 16px;
+  right: 240px;
+  position: absolute;
+  top: 56.5%;
+}
+
+/* Estilo do botão de enviar */
+#loga {
+  width: 234px;
+  padding: 12px;
+  border: none;
+  border-radius: 4px;
+  background-color: #b10000e3; /* Cor de fundo */
+  color: #ffffff; /* Cor do texto */
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  right: 240px;
+  position: absolute;
+  top: 62%;
+}
+
+button[type="submit"]:hover {
+  background-color: #b30000; /* Cor de fundo ao passar o mouse */
+}
+
+/* Botão para abrir o popup */
+#openPopupBtn {
+  background-color: #4CAF50;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#openPopupBtn:hover {
+  background-color: #45a049;
+}
+
+/* Estilo para o popup */
+.popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+  max-width: 400px;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 70;
+}
+
+/* Estilo para o conteúdo do popup */
+.popup-content {
+  text-align: center;
+}
+
+/* Botão de fechar efeito de transição suave */
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  color: #333;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+.close:hover {
+  color: #f00;
+}
+
+/* Estilo para o campo de mensagem em massa e botão */
+.popup-content label {
+  display: block;
+  margin-top: 15px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+
+.popup-content input {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 1px solid black;
+  font-size: 18px;
+}
+
+.popup-content button#sendMessageBulkBtn {
+  background-color: #4CAF50;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 15px;
+  font-size: 18px;
+}
+
+#openPopupBtn{
+  position: fixed;
+  right: 30px;
+  top: 18px;
+}
+
+.popup-content button#sendMessageBulkBtn:hover {
+  background-color: #45a049;
+
+}

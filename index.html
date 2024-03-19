@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyZap</title>
+    <!-- Bootstrap Icons para ícones -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css" />
+    <!-- Folha de Estilo Personalizada -->
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+    
+
+    <!-- Scripts -->
+    <script src="/socket.io/socket.io.js"></script>
+
+    <script>
+        const socket = io();
+
+        socket.on('atualizarPagina', () => {
+            console.log('Recarregando a página devido à atualização do servidor');
+            window.location.reload(true);
+        });
+    </script>
+    <div class="configuracoes">
+
+        <img id="passaro" src="img/pica-pau.png" alt=""><!-- Adicione este trecho onde deseja colocar o botão de abertura do popup -->
+ 
+        
+    </div>
+
+    <button id="openPopupBtn">Envio em massa</button>
+    <div id="popupContainer" class="popup">
+        <div class="popup-content">
+            <span class="close" id="closePopupBtn">&times;</span>
+            <label for="massa">Envie mensagens para todos:</label>
+            <input type="text" name="massa" id="massa">
+            <button id="sendMessageBulkBtn">Enviar Mensagem em Massa</button>
+        </div>
+    </div>
+    
+
+    <!-- Container de Login -->
+    <div id="login-container">
+        <form id="login-form">
+            <h3>MyZap</h3>
+            <h4>Simplificando o mundo através <br> da tecnologia</h4>
+            <label id="texto" for="username">Nome de Usuário:</label>
+            <input type="text" id="username" name="username" required>
+            <label id="textosenha" for="senha">Senha:</label>
+            <input type="password" id="senha" name="senha" required>
+            <button id="loga" type="submit">Entrar</button>
+        </form>
+    </div>
+
+    <!-- Botão de Mudança de Tema -->
+    <div class="botao">
+        <input type="checkbox" name="change-theme" id="change-theme" />
+        <label for="change-theme">
+          <i class="bi bi-sun"></i>
+          <i class="bi bi-moon"></i>
+        </label>
+    </div>
+
+    <!-- Formulário de Envio de Arquivo -->
+    <form id="upload-form" enctype="multipart/form-data">
+        <div class="config" id="config">
+            <p>Bate-papos</p>
+        </div>
+        <label for="file-input" class="file-label">
+            <span>Arquivo</span>
+            <input type="file" id="file-input" name="arquivo" style="display:none;" onchange="uploadFile()">
+        </label>
+        <div id="file-name"></div>
+        <div id="archi">
+            <a href="http://192.168.5.46:3000/view-file"><img src="img/iconmonstr-archive-14-16.png" alt=""></a>
+        </div>
+    </form>
+
+
+
+    <form action="" class="peslu">
+        <input type="text" placeholder="Pesquise por um colega"><img id="lupa" src="upa.png" alt="">
+    </form>
+    
+
+
+    
+<!-- Contêiner principal do chat que abrange toda a altura e largura da página -->
+<div class="chat-container">
+    <!-- Barra lateral esquerda com a lista de usuários -->
+    <div class="lista_users">
+        <p>Registro</p>
+        <button id="Tiago" class="user-button" onclick="changeChatBox('Tiago')">Tiago</button>
+        <button id="Carolina" class="user-button" onclick="changeChatBox('Carolina')">Carolina</button>
+        <button id="Ana" class="user-button" onclick="changeChatBox('Ana')">Ana Marcondes (Registro)</button>
+        <button id="Jéssica" class="user-button" onclick="changeChatBox('Jéssica')">Jéssica</button>
+        <button id="Elizabeti" class="user-button" onclick="changeChatBox('Elizabeti')">Elizabeti</button>
+        
+        <button id="Adriane" class="user-button" onclick="changeChatBox('Adriane')">Adriane</button>
+        <button id="Miguel" class="user-button" onclick="changeChatBox('Miguel')">Miguel</button>
+
+        <p>Finalização</p>
+        <button id="Izabeli" class="user-button" onclick="changeChatBox('Izabeli')">Izabeli</button>
+        <button id="Maria" class="user-button" onclick="changeChatBox('Maria')">Maria</button>
+        <button id="Camilaf" class="user-button" onclick="changeChatBox('Camilaf')">Camilaf</button>
+
+        <p>Adm</p>
+        <button id="Renata" class="user-button" onclick="changeChatBox('Renata')">Renata</button>
+        <button id="Angelo" class="user-button" onclick="changeChatBox('Angelo')">Angelo</button>
+        <button id="Fabiana" class="user-button" onclick="changeChatBox('Fabiana')">Fabiana</button>
+        <button id="Horrana" class="user-button" onclick="changeChatBox('Horrana')">Horrana</button>
+
+        <p>Qualificação</p>
+        <button id="Venicius" class="user-button" onclick="changeChatBox('Venicius')">Venicius</button>
+        <button id="Camilaq" class="user-button" onclick="changeChatBox('Camilaq')">Camila Rosa (Qualificação)</button>
+        <button id="Thais" class="user-button" onclick="changeChatBox('Thais')">Thais</button>
+        <button id="Fernanda" class="user-button" onclick="changeChatBox('Fernanda')">Fernanda</button>
+        <button id="Andreia" class="user-button" onclick="changeChatBox('Andreia')">Andreia</button>
+        <button id="Katia" class="user-button" onclick="changeChatBox('Katia')">Katia</button>
+        <button id="Grazieli" class="user-button" onclick="changeChatBox('Grazieli')">Grazieli</button>
+        <button id="Andressa" class="user-button" onclick="changeChatBox('Andressa')">Andressa</button>
+
+        <p>Certidão</p>
+        <button id="Anac" class="user-button" onclick="changeChatBox('Anac')">Ana Matos (certidão)</button>
+        <button id="Larissa" class="user-button" onclick="changeChatBox('Larissa')">Larissa</button>
+        <button id="Janaina" class="user-button" onclick="changeChatBox('Janaina')">Janaina</button>
+        <button id="Leticia" class="user-button" onclick="changeChatBox('Leticia')">Leticia</button>
+
+
+            <p>Recepção</p>
+            <button id="Sirlene" class="user-button" onclick="changeChatBox('Sirlene')">Sirlene</button>
+            <button id="Anaelen" class="user-button" onclick="changeChatBox('Anaelen')">Anaelen</button>
+            <button id="Michele" class="user-button" onclick="changeChatBox('Michele')">Michele</button>
+            <button id="Kethelin" class="user-button" onclick="changeChatBox('Kethelin')">Kethelin</button>
+            <button id="Marilize" class="user-button" onclick="changeChatBox('Marilize')">Marilize</button>
+
+            <p>Usucapião</p>
+            <button id="Renan" class="user-button" onclick="changeChatBox('Renan')">Renan</button>
+            <button id="Franciele" class="user-button" onclick="changeChatBox('Franciele')">Franciele</button>
+  
+            <p>Fantasmas</p>
+            <button id="Esquerda" class="user-button" onclick="changeChatBox('Esquerda')">Esquerda</button>
+            <button id="Direita" class="user-button" onclick="changeChatBox('Direita')">Direita</button>
+
+ 
+    </div>
+    <div class="imagem">
+        <img src="img/esperando.svg" alt="">
+        <p>Nenhuma conversa selecionada</p>
+    </div>
+    <div id="notification-container" class="notification-container"></div>
+     <div class="message-area">
+        <div id="bulk-messages-container"></div>
+        <div id="Tiago-chat-box" class="chat-box"></div>
+        <div id="Carolina-chat-box" class="chat-box"></div>
+        <div id="Ana-chat-box" class="chat-box"></div>
+        <div id="Jéssica-chat-box" class="chat-box"></div>
+        <div id="Elizabeti-chat-box" class="chat-box"></div>
+        <div id="Adriane-chat-box" class="chat-box"></div>
+        <div id="Miguel-chat-box" class="chat-box"></div>
+
+        <div id="Izabeli-chat-box" class="chat-box"></div>
+        <div id="Maria-chat-box" class="chat-box"></div>
+        <div id="Camilaf-chat-box" class="chat-box"></div>
+
+        <div id="Renata-chat-box" class="chat-box"></div>
+        <div id="Angelo-chat-box" class="chat-box"></div>
+        <div id="Fabiana-chat-box" class="chat-box"></div>
+        <div id="Horrana-chat-box" class="chat-box"></div>
+
+        <div id="Venicius-chat-box" class="chat-box"></div>
+        <div id="Camilaq-chat-box" class="chat-box"></div>
+        <div id="Thais-chat-box" class="chat-box"></div>
+        <div id="Fernanda-chat-box" class="chat-box"></div>
+        <div id="Andreia-chat-box" class="chat-box"></div>
+        <div id="Katia-chat-box" class="chat-box"></div>
+        <div id="Grazieli-chat-box" class="chat-box"></div>
+        <div id="Andressa-chat-box" class="chat-box"></div>
+
+        <div id="Anac-chat-box" class="chat-box"></div>
+        <div id="Larissa-chat-box" class="chat-box"></div>
+        <div id="Janaina-chat-box" class="chat-box"></div>
+        <div id="Leticia-chat-box" class="chat-box"></div>
+
+        <div id="Sirlene-chat-box" class="chat-box"></div>
+        <div id="Anaelen-chat-box" class="chat-box"></div>
+        <div id="Michele-chat-box" class="chat-box"></div>
+        <div id="Kethelin-chat-box" class="chat-box"></div>
+        <div id="Marilize-chat-box" class="chat-box"></div>
+
+        <div id="Renan-chat-box" class="chat-box"></div>
+        <div id="Franciele-chat-box" class="chat-box"></div>
+
+        <div id="Esquerda-chat-box" class="chat-box"></div>
+        <div id="Direita-chat-box" class="chat-box"></div>
+
+
+        <div id="conversation-status"></div>
+    </div>
+
+    <!-- Área do rodapé para entrada e envio de mensagens -->
+    <div class="chat-footer">
+        <input type="text" class="message-input" id="message-input" placeholder="Digite sua mensagem..." autocomplete="off">
+        <button id="send-message">Enviar</button>
+    </div>
+
+    <!-- Emoji Picker -->
+    <div class="emoji-picker">
+        <img src="img/feliz.png" alt="Abrir seleção de emojis" class="emoji-trigger">
+        <div class="emoji-library" style="display: none;">
+            <!-- Os emojis serão inseridos aqui dinamicamente -->
+        </div>
+    </div>
+
+    <!-- Preview e Download Link -->
+    <div id="preview" class="preview"></div>
+    <a href="#" id="download-link" class="download-button" download style="display: none;">Baixar Arquivo</a>
+    <script type="module" src="script.js" defer></script>
+</body>
+</html>
